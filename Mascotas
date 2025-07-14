@@ -1,0 +1,158 @@
+# Crear una versión alternativa del archivo HTML de colesterol con otras imágenes
+html_alterno = """
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Colesterol LDL - Alterna</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0px;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #e8f5e9;
+        }
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+        }
+        h1 {
+            text-align: center;
+            color: #1b5e20;
+        }
+        label {
+            display: block;
+            color: #2e7d32;
+            margin: 5px auto;
+            font-weight: bold;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #81c784;
+            border-radius: 4px;
+            font-size: 20px;
+        }
+        input[type="submit"] {
+            background-color: #388e3c;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #1b5e20;
+        }
+        .resultado {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f1f8e9;
+            border-left: 5px solid #43a047;
+        }
+        table {
+            width: 100%;
+            border: 3px solid #2e7d32;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th {
+            background: #a5d6a7;
+            color: #1b5e20;
+            padding: 10px 20px;
+        }
+        td {
+            padding: 10px 20px;
+            color: #33691e;
+            text-align: center;
+        }
+        .imagen-top {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .imagen-top img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="imagen-top">
+            <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc" alt="Salud y bienestar">
+        </div>
+        <h1>Calculadora de Colesterol LDL</h1>
+        <form id="formulario">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" required>
+
+            <label for="total">Colesterol Total:</label>
+            <input type="number" id="total" step="any" required>
+
+            <label for="hdl">HDL:</label>
+            <input type="number" id="hdl" step="any" required>
+
+            <label for="trigliceridos">Triglicéridos:</label>
+            <input type="number" id="trigliceridos" step="any" required>
+
+            <input type="submit" value="Calcular LDL">
+        </form>
+
+        <div id="resultado" class="resultado"></div>
+
+        <table>
+            <tr><th>Intervalo</th><th>Clasificación</th></tr>
+            <tr><td>Menor a 100</td><td>Óptimo</td></tr>
+            <tr><td>100 - 129</td><td>Casi óptimo</td></tr>
+            <tr><td>130 - 159</td><td>Límite alto</td></tr>
+            <tr><td>160 - 189</td><td>Alto</td></tr>
+            <tr><td>190 o más</td><td>Muy alto</td></tr>
+        </table>
+
+        <p><b><span>HTML (HyperText Markup Language)</span></b> es el lenguaje de marcado estándar utilizado para estructurar y presentar contenido en la web. Define la organización de textos, imágenes, enlaces y otros elementos mediante etiquetas. Es la base de cualquier página web, trabajando junto con CSS y JavaScript para crear sitios interactivos y visualmente atractivos.</p>
+    </div>
+
+    <script>
+        document.getElementById('formulario').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            let nombre = document.getElementById('nombre').value;
+            let total = parseFloat(document.getElementById('total').value);
+            let hdl = parseFloat(document.getElementById('hdl').value);
+            let trigliceridos = parseFloat(document.getElementById('trigliceridos').value);
+
+            let ldl = total - hdl - (trigliceridos / 5);
+            let mensaje = "";
+
+            if (ldl < 100) {
+                mensaje = "tienes un buen nivel de colesterol.";
+            } else if (ldl <= 129) {
+                mensaje = "colesterol LDL casi óptimo.";
+            } else if (ldl <= 159) {
+                mensaje = "colesterol LDL al límite ALTO.";
+            } else if (ldl <= 189) {
+                mensaje = "colesterol LDL ALTO.";
+            } else {
+                mensaje = "colesterol LDL MUY ALTO.";
+            }
+
+            document.getElementById('resultado').innerHTML = 
+                `<strong>${nombre}</strong>, su LDL es: <strong>${ldl.toFixed(2)}</strong><br>${mensaje}`;
+        });
+    </script>
+</body>
+</html>
+"""
+
+# Guardar el archivo
+html_alterno_path = "/mnt/data/colesterol_ldl_alterno.html"
+with open(html_alterno_path, "w", encoding="utf-8") as f:
+    f.write(html_alterno)
+
+html_alterno_path
