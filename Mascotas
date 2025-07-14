@@ -1,5 +1,3 @@
-# Crear una versión alternativa del archivo HTML de colesterol con otras imágenes
-html_alterno = """
 <!DOCTYPE html>
 <html lang="es">
 <head>
