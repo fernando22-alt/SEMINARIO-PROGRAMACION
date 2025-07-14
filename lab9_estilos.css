@@ -1,0 +1,23 @@
+header {
+    background-color: lightblue;
+    text-align: center;
+}
+nav a {
+    margin: 10px;
+    text-decoration: none;
+}
+nav a:hover {
+    color: red;
+}
+.contenedor {
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px gray;
+    margin: 10px;
+    padding: 10px;
+}
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
